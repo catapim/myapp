@@ -5,9 +5,17 @@ const port = 3000
 var population = 0
 var residential_zones = 0 
 
+var date = "1800-01-04"
+var my_date = new Date(date);
+
 // game tick
 setInterval(function() {
-    population=population+1;
+    if (population < residential_zones) {
+        population=population+1
+    } else {
+        population=population;
+    }
+    my_date.setDate(my_date.getDate() + 1);
 },1000)
 
 app.use(express.static('dist'))
@@ -17,10 +25,9 @@ app.use(express.static('dist'))
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 app.get('/info', (req, res) => res.json(
-        { 
-            "population":population,
-            "residential_zones": residential_zones
-         }
+        { "population":population,
+          "residential_zones": residential_zones,
+          "my_date": my_date }
         )
 );
 

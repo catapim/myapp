@@ -6,7 +6,8 @@ class MiniCiudad extends Component {
         super(); 
         this.state = {
             "population":0,
-            "residential_zones":0
+            "residential_zones":0,
+            "my_date": null
         }       
         setInterval(()=>{
             this.getInfo();   
@@ -23,7 +24,8 @@ class MiniCiudad extends Component {
                 // set the new state of population declared earlier
                 this.setState({
                     "population":result.population,
-                    "residential_zones": result.residential_zones
+                    "residential_zones": result.residential_zones,
+                    "my_date":new Date(result.my_date)
                 })
             },
             (error) => {
@@ -46,11 +48,18 @@ class MiniCiudad extends Component {
 
 
     render() {
+        let day_of_week=null
+        let date=null;
+        if(this.state.my_date) {
+            day_of_week=this.state.my_date.getDay();
+            date=this.state.my_date.getDate();
+        } 
         return(
             <div>
                 <h1>Miniciudad</h1>
                 <p>population: {this.state.population}</p>
-                <p>residential zones: {this.state.residential_zones}</p>                
+                <p>residential zones: {this.state.residential_zones}</p>    
+                <p>date: {day_of_week} {date}</p>            
                 <button onClick={this.addResidentialZone}>add residential zone</button>
             </div>           
         )
