@@ -24,10 +24,8 @@ app.get('/info', (req, res) => res.json(
         )
 );
 
-app.get('/add_residential_zone', (req, res) => res.json(
-    {
-        "success":true
-    }
-    )
-);
+app.get('/add_residential_zone', function(req, res) {
+    residential_zones=residential_zones+1
+    res.json({"success":true});
+})
 

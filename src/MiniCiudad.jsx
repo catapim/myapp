@@ -11,15 +11,15 @@ class MiniCiudad extends Component {
         setInterval(()=>{
             this.getInfo();   
         },1000)
+        //binding allows me to have functions with this insted of made them arrow functions
+        this.addResidentialZone = this.addResidentialZone.bind(this)
     }
 
     getInfo() {
-        console.log("[get info]")
         // fetch population info from the server
         fetch('/info').then(res => res.json()).then(
             (result) => {
                 // iff succesful, update local state
-                console.log(result)
                 // set the new state of population declared earlier
                 this.setState({
                     "population":result.population,
@@ -32,25 +32,23 @@ class MiniCiudad extends Component {
             }
         )
     }
-    addResidentialZone(){
-        alert("alert for add residential zone")
+    addResidentialZone() {
         // calling a new json object from another page
         fetch('/add_residential_zone').then(res => res.json()).then(
             (result) => {
-                console.log(result)
+                this.getInfo()
             },
             (error) => {
                 console.log(error);
             }
         )
-
     }
 
 
     render() {
         return(
             <div>
-                <h1>miniciudad</h1>
+                <h1>Miniciudad</h1>
                 <p>population: {this.state.population}</p>
                 <p>residential zones: {this.state.residential_zones}</p>                
                 <button onClick={this.addResidentialZone}>add residential zone</button>
