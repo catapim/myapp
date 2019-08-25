@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 
 var population = 0
+var residential_zones = 0 
 
 // game tick
 setInterval(function() {
@@ -15,5 +16,18 @@ app.use(express.static('dist'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
-app.get('/info', (req, res) => res.json({"population":population}));
+app.get('/info', (req, res) => res.json(
+        { 
+            "population":population,
+            "residential_zones": residential_zones
+         }
+        )
+);
+
+app.get('/add_residential_zone', (req, res) => res.json(
+    {
+        "success":true
+    }
+    )
+);
 
