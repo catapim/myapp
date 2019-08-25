@@ -1,3 +1,3 @@
-function showalert(){
+export default function showalert(){
     alert("hola");
 }
