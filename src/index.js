@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import MiniCiudad from './MiniCiudad.jsx';
 const title = 'React with Webpack and Babel';
 
 ReactDOM.render(
-  <div>{title}</div>,
-  document.getElementById('app')
+    <MiniCiudad/>,
+    document.getElementById('app')
 );
 
 module.hot.accept();
