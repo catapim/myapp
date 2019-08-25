@@ -50,16 +50,20 @@ class MiniCiudad extends Component {
     render() {
         let day_of_week=null
         let date=null;
+        let month = null;
+        let year = null;
         if(this.state.my_date) {
             day_of_week=this.state.my_date.getDay();
             date=this.state.my_date.getDate();
+            month=this.state.my_date.getMonth();
+            year=this.state.my_date.getFullYear();
         } 
         return(
             <div>
                 <h1>Miniciudad</h1>
                 <p>population: {this.state.population}</p>
                 <p>residential zones: {this.state.residential_zones}</p>    
-                <p>date: {day_of_week} {date}</p>            
+                <p>date: week day: {day_of_week}  day:  {date}  month: {month} year: {year}</p>            
                 <button onClick={this.addResidentialZone}>add residential zone</button>
             </div>           
         )
