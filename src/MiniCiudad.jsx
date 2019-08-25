@@ -19,11 +19,16 @@ class MiniCiudad extends Component {
     }
     getInfo() {
         console.log("[get info]")
+        // fetch population info from the server
         fetch('/info').then(res => res.json()).then(
             (result) => {
+                // iff succesful, update local state
                 console.log(result)
+                // set the new state of population declared earlier
+                this.setState({"population":result.population})
             },
             (error) => {
+                // if fails, present error
                 console.log(error);
             }
         )
@@ -37,7 +42,6 @@ class MiniCiudad extends Component {
         return(
         
             <div>
-                
                 <h1>miniciudad</h1>
                 <p>population: {this.state.population}</p>
                 <p>residential zones: {this.state.residential_zones}</p>                
