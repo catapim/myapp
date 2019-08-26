@@ -24,6 +24,8 @@ app.use(express.static('dist'))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
+//this method respons is a json object w population, residential_zones and date.
+//all these variable were initialized in the beginning of the server file
 app.get('/info', (req, res) => res.json(
         { "population":population,
           "residential_zones": residential_zones,
