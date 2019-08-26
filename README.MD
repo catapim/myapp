@@ -1,10 +1,10 @@
 # Miniciudad
 
-## Compile and run front end with Webpack adn watch
+#### Compile and run front end with Webpack and watch
 
 `npx webpack -d --watch`
 
-## Run Node
+#### Run Node
 
 `node app.js`
 
