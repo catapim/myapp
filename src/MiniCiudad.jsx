@@ -14,6 +14,8 @@ class MiniCiudad extends Component {
         },1000)
         //binding allows me to have functions with this insted of made them arrow functions
         this.addResidentialZone = this.addResidentialZone.bind(this)
+        this.destroyResidentialZone = this.destroyResidentialZone.bind(this)
+        
     }
 
     getInfo() {
@@ -46,6 +48,17 @@ class MiniCiudad extends Component {
         )
     }
 
+    destroyResidentialZone(){
+        fetch('/destroy_residential_zone').then(res => res.json()).then (
+            (result) => {
+                this.getInfo()
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
+    }
+
 
     render() {
         let day_of_week=null
@@ -65,6 +78,7 @@ class MiniCiudad extends Component {
                 <p>residential zones: {this.state.residential_zones}</p>    
                 <p>date: week day: {day_of_week}  day:  {date}  month: {month} year: {year}</p>            
                 <button onClick={this.addResidentialZone}>add residential zone</button>
+                <button onClick={this.destroyResidentialZone}>destroy residential zone</button>
             </div>           
         )
     }

@@ -12,9 +12,13 @@ var my_date = new Date(date);
 setInterval(function() {
     if (population < residential_zones) {
         population=population+1
+
+        //reduce population if it's bigger than residential zones
+    } else if (population > residential_zones) {
+        population=population-1
     } else {
         population=population;
-    }
+    } 
     my_date.setDate(my_date.getDate() + 1);
 },1000)
 
@@ -32,9 +36,16 @@ app.get('/info', (req, res) => res.json(
           "my_date": my_date }
         )
 );
-
+//add residential zones
 app.get('/add_residential_zone', function(req, res) {
     residential_zones=residential_zones+1
     res.json({"success":true});
-})
+});
+//reduce residential zones
+app.get('/destroy_residential_zone', function(req, res) {
+    residential_zones=residential_zones-1
+    res.json({"success":"yes"});
+});
+
+
 
